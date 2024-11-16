@@ -11,7 +11,7 @@ function ShowsPage() {
         Coming Soon
       </h1>
       <p className="text-center text-gray-500 mt-4">
-        Our movies section is currently under development. Check back later!
+        Our shows section is currently under development. Check back later!
       </p>
     </div>
   );
