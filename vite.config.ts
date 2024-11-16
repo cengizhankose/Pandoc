@@ -3,11 +3,10 @@ import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import path from "path";
-import { viteRequire } from "vite-require";
-
+import commonjs from "vite-plugin-commonjs";
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [TanStackRouterVite(), react(), basicSsl()],
+  plugins: [TanStackRouterVite(), react(), basicSsl(), commonjs()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
