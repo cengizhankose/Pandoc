@@ -20,6 +20,7 @@ const WriteStoryLazyImport = createFileRoute('/write-story')()
 const ShowsLazyImport = createFileRoute('/shows')()
 const MyListLazyImport = createFileRoute('/my-list')()
 const MoviesLazyImport = createFileRoute('/movies')()
+const HomepageLazyImport = createFileRoute('/homepage')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
@@ -48,6 +49,12 @@ const MoviesLazyRoute = MoviesLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/movies.lazy').then((d) => d.Route))
 
+const HomepageLazyRoute = HomepageLazyImport.update({
+  id: '/homepage',
+  path: '/homepage',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/homepage.lazy').then((d) => d.Route))
+
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
@@ -63,6 +70,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/homepage': {
+      id: '/homepage'
+      path: '/homepage'
+      fullPath: '/homepage'
+      preLoaderRoute: typeof HomepageLazyImport
       parentRoute: typeof rootRoute
     }
     '/movies': {
@@ -100,6 +114,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/homepage': typeof HomepageLazyRoute
   '/movies': typeof MoviesLazyRoute
   '/my-list': typeof MyListLazyRoute
   '/shows': typeof ShowsLazyRoute
@@ -108,6 +123,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/homepage': typeof HomepageLazyRoute
   '/movies': typeof MoviesLazyRoute
   '/my-list': typeof MyListLazyRoute
   '/shows': typeof ShowsLazyRoute
@@ -117,6 +133,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/homepage': typeof HomepageLazyRoute
   '/movies': typeof MoviesLazyRoute
   '/my-list': typeof MyListLazyRoute
   '/shows': typeof ShowsLazyRoute
@@ -125,15 +142,29 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  fullPaths:
+    | '/'
+    | '/homepage'
+    | '/movies'
+    | '/my-list'
+    | '/shows'
+    | '/write-story'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
-  id: '__root__' | '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  to: '/' | '/homepage' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  id:
+    | '__root__'
+    | '/'
+    | '/homepage'
+    | '/movies'
+    | '/my-list'
+    | '/shows'
+    | '/write-story'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  HomepageLazyRoute: typeof HomepageLazyRoute
   MoviesLazyRoute: typeof MoviesLazyRoute
   MyListLazyRoute: typeof MyListLazyRoute
   ShowsLazyRoute: typeof ShowsLazyRoute
@@ -142,6 +173,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  HomepageLazyRoute: HomepageLazyRoute,
   MoviesLazyRoute: MoviesLazyRoute,
   MyListLazyRoute: MyListLazyRoute,
   ShowsLazyRoute: ShowsLazyRoute,
@@ -159,6 +191,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/homepage",
         "/movies",
         "/my-list",
         "/shows",
@@ -167,6 +200,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/homepage": {
+      "filePath": "homepage.lazy.tsx"
     },
     "/movies": {
       "filePath": "movies.lazy.tsx"
