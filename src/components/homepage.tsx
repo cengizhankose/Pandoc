@@ -5,6 +5,7 @@ interface MediaItem {
   id: number;
   title: string;
   imageUrl: string;
+  videoUrl?: string;
 }
 
 // Create data arrays
@@ -14,6 +15,8 @@ const trendingItems: MediaItem[] = [
     title: `Sci-Fi Title 1`,
     imageUrl:
       "https://utfs.io/f/KPU1Zt5N4JHyEy1tw9kCUOQdoMlra1hNGjL6sJAKg83Dbp4I",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyO98b0oysyPl41GXD9gENwhoZiLRB57pjHbAz",
   },
   {
     id: 1,
@@ -74,10 +77,54 @@ const userStories: MediaItem[] = [
   },
 ];
 
+const openVideoPlayer = (videoUrl: string) => {
+  // Create container div
+  const containerDiv = document.createElement("div");
+  containerDiv.className =
+    "fixed inset-0 w-full h-full z-50 bg-black flex flex-col";
+
+  // Create close button
+  const closeButton = document.createElement("button");
+  closeButton.innerHTML = "✕";
+  closeButton.className =
+    "absolute top-4 right-4 text-white text-2xl hover:text-gray-300 z-10";
+
+  // Create video element
+  const videoElement = document.createElement("video");
+  videoElement.src = videoUrl;
+  videoElement.className = "w-full h-full";
+  videoElement.controls = true;
+  videoElement.autoplay = true;
+
+  // Add elements to container
+  containerDiv.appendChild(closeButton);
+  containerDiv.appendChild(videoElement);
+  document.body.appendChild(containerDiv);
+
+  // Handle close button click
+  const handleClose = () => {
+    document.body.removeChild(containerDiv);
+    document.removeEventListener("keydown", handleEsc);
+  };
+
+  closeButton.onclick = handleClose;
+
+  // Add event listener to exit fullscreen on ESC key
+  const handleEsc = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      handleClose();
+    }
+  };
+  document.addEventListener("keydown", handleEsc);
+};
+
 // Create a reusable MediaCard component
-function MediaCard({ title, imageUrl }: Omit<MediaItem, "id">) {
+function MediaCard({ title, imageUrl, videoUrl }: Omit<MediaItem, "id">) {
   return (
-    <div className="relative overflow-hidden rounded-md group">
+    <div
+      className="relative overflow-hidden rounded-md group"
+      onClick={() => videoUrl && openVideoPlayer(videoUrl)}
+    >
       <img
         src={imageUrl}
         alt={title}
@@ -113,7 +160,14 @@ export function Homepage() {
               reality.
             </p>
             <div className="flex flex-row gap-4">
-              <Button className="bg-amber-600 text-white  w-full sm:w-auto">
+              <Button
+                className="bg-amber-600 text-white w-full sm:w-auto"
+                onClick={() =>
+                  openVideoPlayer(
+                    "https://utfs.io/f/KPU1Zt5N4JHyXq5QO3eUem1ucQCTslv8WbFahGJHOYiIZAnr"
+                  )
+                }
+              >
                 Play
               </Button>
               <Button
@@ -136,6 +190,7 @@ export function Homepage() {
                   key={item.id}
                   title={item.title}
                   imageUrl={item.imageUrl}
+                  videoUrl={item.videoUrl}
                 />
               ))}
             </div>
@@ -152,6 +207,7 @@ export function Homepage() {
                   key={item.id}
                   title={item.title}
                   imageUrl={item.imageUrl}
+                  videoUrl={item.videoUrl}
                 />
               ))}
             </div>
