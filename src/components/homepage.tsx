@@ -1,5 +1,95 @@
 import { Button } from "@/components/ui/button";
 
+// Define interfaces for your data
+interface MediaItem {
+  id: number;
+  title: string;
+  imageUrl: string;
+}
+
+// Create data arrays
+const trendingItems: MediaItem[] = [
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyEy1tw9kCUOQdoMlra1hNGjL6sJAKg83Dbp4I",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHywehH2z0zPqQRM1SkC7t8d6XHhO5omc9exNgn",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHy7dg9IOqVZDmTzd6rWoeIKYMCgPhRNtA91bun",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyN2AVJ1FCqR6F07mrJ8Ch1vlx5uKbOUGQBZp9",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyqkxMIe5FDYxisqryw29PpAS0bIGjULzB76Ee",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyQZ1M15Y1js2Ezg5qRKD3VXoy9ea7NYdvAthS",
+  },
+  {
+    id: 1,
+    title: `Sci-Fi Title 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyzIK2Imb4Qd6atqDx2nlON30Jjkoih5HfBK7U",
+  },
+];
+
+const userStories: MediaItem[] = [
+  {
+    id: 1,
+    title: `User Story 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynMKX70SL5SdvgGauEMT8iHPhsA947RBlY0bF",
+  },
+  {
+    id: 1,
+    title: `User Story 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyW3csqTMjuwBzY4tGiVLZEh3vRmyf5gF9kQaT",
+  },
+  {
+    id: 1,
+    title: `User Story 1`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHy7Elo0fdqVZDmTzd6rWoeIKYMCgPhRNtA91bu",
+  },
+];
+
+// Create a reusable MediaCard component
+function MediaCard({ title, imageUrl }: Omit<MediaItem, "id">) {
+  return (
+    <div className="relative overflow-hidden rounded-md group">
+      <img
+        src={imageUrl}
+        alt={title}
+        className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+        <h3 className="text-lg font-semibold">{title}</h3>
+      </div>
+    </div>
+  );
+}
+
 export function Homepage() {
   return (
     <>
@@ -8,7 +98,8 @@ export function Homepage() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+              backgroundImage:
+                "url('https://utfs.io/f/KPU1Zt5N4JHyoKxJytXvCiFX8WUPmr04b9s5jqI1HuOa3hkp')",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
@@ -21,8 +112,8 @@ export function Homepage() {
               mind-bending sci-fi epic that challenges the very fabric of
               reality.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
-              <Button className="bg-white text-black hover:bg-gray-200 w-full sm:w-auto">
+            <div className="flex flex-row gap-4">
+              <Button className="bg-amber-600 text-white  w-full sm:w-auto">
                 Play
               </Button>
               <Button
@@ -40,22 +131,12 @@ export function Homepage() {
               Trending Now
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {[...Array(10)].map((_, i) => (
-                <div
-                  key={i}
-                  className="relative overflow-hidden rounded-md group"
-                >
-                  <img
-                    src={`/placeholder.svg?height=400&width=300&text=Sci-Fi+${i + 1}`}
-                    alt={`Sci-Fi Movie ${i + 1}`}
-                    className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <h3 className="text-lg font-semibold">
-                      Sci-Fi Title {i + 1}
-                    </h3>
-                  </div>
-                </div>
+              {trendingItems.map((item) => (
+                <MediaCard
+                  key={item.id}
+                  title={item.title}
+                  imageUrl={item.imageUrl}
+                />
               ))}
             </div>
           </div>
@@ -66,22 +147,12 @@ export function Homepage() {
               Top User-Generated Stories
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="relative overflow-hidden rounded-md group"
-                >
-                  <img
-                    src={`/placeholder.svg?height=400&width=300&text=User+Story+${i + 1}`}
-                    alt={`User Story ${i + 1}`}
-                    className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <h3 className="text-lg font-semibold">
-                      User Story {i + 1}
-                    </h3>
-                  </div>
-                </div>
+              {userStories.map((item) => (
+                <MediaCard
+                  key={item.id}
+                  title={item.title}
+                  imageUrl={item.imageUrl}
+                />
               ))}
             </div>
           </div>

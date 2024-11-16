@@ -9,7 +9,7 @@ export const Route = createRootRoute({
         {/* Your layout components */}
         <div className="flex flex-col min-h-screen bg-black text-white">
           <Header />
-          <main className="py-14">
+          <main>
             <Outlet />
           </main>
         </div>

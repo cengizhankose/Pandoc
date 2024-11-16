@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, TouchEvent } from "react";
 
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -80,6 +80,7 @@ function WriteStoryPage() {
   const [isDark, setIsDark] = useState(
     () => window.matchMedia("(prefers-color-scheme: dark)").matches
   );
+  const [touchStart, setTouchStart] = useState(0);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -89,6 +90,22 @@ function WriteStoryPage() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStart(e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    const touchEnd = e.changedTouches[0].clientY;
+    const swipeDistance = touchEnd - touchStart;
+
+    // If swiped down more than 50px
+    if (swipeDistance > 50) {
+      // Blur any active element (keyboard dismissal)
+      const activeElement = document.activeElement as HTMLElement;
+      activeElement?.blur();
+    }
+  };
 
   const initialConfig = {
     namespace: "StoryEditor",
@@ -116,7 +133,7 @@ function WriteStoryPage() {
   }
 
   return (
-    <div className={`min-h-screen`}>
+    <div className="pt-14 pb-20">
       <div
         className={`sticky top-0 z-10 border-b ${isDark ? " border-gray-700" : " border-gray-200"}`}
       >
@@ -132,16 +149,18 @@ function WriteStoryPage() {
       <div className="container mx-auto px-4">
         <LexicalComposer initialConfig={initialConfig}>
           <div
-            className={`relative min-h-[60vh] mt-4 rounded-lg border ${
+            className={`relative min-h-[50vh] mt-4 rounded-lg border ${
               isDark
                 ? "border-gray-700 text-gray-100"
                 : "border-gray-200 text-gray-900"
             }`}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <ToolbarPlugin />
             <RichTextPlugin
               contentEditable={
-                <ContentEditable className="min-h-[60vh] px-4 py-4" />
+                <ContentEditable className="min-h-[50vh] px-4 py-4" />
               }
               ErrorBoundary={LexicalErrorBoundary}
             />

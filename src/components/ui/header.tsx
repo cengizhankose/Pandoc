@@ -8,6 +8,7 @@ import {
   FilmIcon,
   BookmarkIcon,
 } from "lucide-react";
+import WebApp from "@twa-dev/sdk";
 
 export function Header() {
   return (
