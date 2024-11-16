@@ -2,11 +2,11 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import WebApp from "@twa-dev/sdk";
 
-export const Route = createLazyFileRoute("/about")({
-  component: AboutPage,
+export const Route = createLazyFileRoute("/my-list")({
+  component: MyListPage,
 });
 
-function AboutPage() {
+function MyListPage() {
   const [count, setCount] = useState(0);
 
   return (

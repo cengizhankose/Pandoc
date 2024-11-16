@@ -40,15 +40,21 @@ export function Header() {
               Home
             </Link>
             <Link
-              to="/about"
+              to="/shows"
               className="hover:text-amber-600 transition-colors"
             >
               TV Shows
             </Link>
-            <Link to="/" className="hover:text-amber-600 transition-colors">
+            <Link
+              to="/movies"
+              className="hover:text-amber-600 transition-colors"
+            >
               Movies
             </Link>
-            <Link to="/" className="hover:text-amber-600 transition-colors">
+            <Link
+              to="/my-list"
+              className="hover:text-amber-600 transition-colors"
+            >
               My List
             </Link>
           </div>
@@ -67,7 +73,7 @@ export function Header() {
           </Link>
 
           <Link
-            to="/about"
+            to="/shows"
             className="flex flex-col items-center space-y-1 text-gray-400 hover:text-amber-600"
           >
             <TvIcon className="h-6 w-6" />
@@ -85,7 +91,7 @@ export function Header() {
           </Link>
 
           <Link
-            to="/"
+            to="/movies"
             className="flex flex-col items-center space-y-1 text-gray-400 hover:text-amber-600"
           >
             <FilmIcon className="h-6 w-6" />
@@ -93,7 +99,7 @@ export function Header() {
           </Link>
 
           <Link
-            to="/"
+            to="/my-list"
             className="flex flex-col items-center space-y-1 text-gray-400 hover:text-amber-600"
           >
             <BookmarkIcon className="h-6 w-6" />

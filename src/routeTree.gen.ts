@@ -8,111 +8,149 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
+import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const WriteStoryLazyImport = createFileRoute("/write-story")();
-const AboutLazyImport = createFileRoute("/about")();
-const IndexLazyImport = createFileRoute("/")();
+const WriteStoryLazyImport = createFileRoute('/write-story')()
+const ShowsLazyImport = createFileRoute('/shows')()
+const MyListLazyImport = createFileRoute('/my-list')()
+const MoviesLazyImport = createFileRoute('/movies')()
+const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
 const WriteStoryLazyRoute = WriteStoryLazyImport.update({
-  id: "/write-story",
-  path: "/write-story",
+  id: '/write-story',
+  path: '/write-story',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import("./routes/write-story.lazy").then((d) => d.Route));
+} as any).lazy(() => import('./routes/write-story.lazy').then((d) => d.Route))
 
-const AboutLazyRoute = AboutLazyImport.update({
-  id: "/about",
-  path: "/about",
+const ShowsLazyRoute = ShowsLazyImport.update({
+  id: '/shows',
+  path: '/shows',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import("./routes/about.lazy").then((d) => d.Route));
+} as any).lazy(() => import('./routes/shows.lazy').then((d) => d.Route))
+
+const MyListLazyRoute = MyListLazyImport.update({
+  id: '/my-list',
+  path: '/my-list',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/my-list.lazy').then((d) => d.Route))
+
+const MoviesLazyRoute = MoviesLazyImport.update({
+  id: '/movies',
+  path: '/movies',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/movies.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import("./routes/index.lazy").then((d) => d.Route));
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexLazyImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/about": {
-      id: "/about";
-      path: "/about";
-      fullPath: "/about";
-      preLoaderRoute: typeof AboutLazyImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/write-story": {
-      id: "/write-story";
-      path: "/write-story";
-      fullPath: "/write-story";
-      preLoaderRoute: typeof WriteStoryLazyImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/movies': {
+      id: '/movies'
+      path: '/movies'
+      fullPath: '/movies'
+      preLoaderRoute: typeof MoviesLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/my-list': {
+      id: '/my-list'
+      path: '/my-list'
+      fullPath: '/my-list'
+      preLoaderRoute: typeof MyListLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/shows': {
+      id: '/shows'
+      path: '/shows'
+      fullPath: '/shows'
+      preLoaderRoute: typeof ShowsLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/write-story': {
+      id: '/write-story'
+      path: '/write-story'
+      fullPath: '/write-story'
+      preLoaderRoute: typeof WriteStoryLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexLazyRoute;
-  "/about": typeof AboutLazyRoute;
-  "/write-story": typeof WriteStoryLazyRoute;
+  '/': typeof IndexLazyRoute
+  '/movies': typeof MoviesLazyRoute
+  '/my-list': typeof MyListLazyRoute
+  '/shows': typeof ShowsLazyRoute
+  '/write-story': typeof WriteStoryLazyRoute
 }
 
 export interface FileRoutesByTo {
-  "/": typeof IndexLazyRoute;
-  "/about": typeof AboutLazyRoute;
-  "/write-story": typeof WriteStoryLazyRoute;
+  '/': typeof IndexLazyRoute
+  '/movies': typeof MoviesLazyRoute
+  '/my-list': typeof MyListLazyRoute
+  '/shows': typeof ShowsLazyRoute
+  '/write-story': typeof WriteStoryLazyRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/": typeof IndexLazyRoute;
-  "/about": typeof AboutLazyRoute;
-  "/write-story": typeof WriteStoryLazyRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexLazyRoute
+  '/movies': typeof MoviesLazyRoute
+  '/my-list': typeof MyListLazyRoute
+  '/shows': typeof ShowsLazyRoute
+  '/write-story': typeof WriteStoryLazyRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/about" | "/write-story";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/about" | "/write-story";
-  id: "__root__" | "/" | "/about" | "/write-story";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  id: '__root__' | '/' | '/movies' | '/my-list' | '/shows' | '/write-story'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexLazyRoute: typeof IndexLazyRoute;
-  AboutLazyRoute: typeof AboutLazyRoute;
-  WriteStoryLazyRoute: typeof WriteStoryLazyRoute;
+  IndexLazyRoute: typeof IndexLazyRoute
+  MoviesLazyRoute: typeof MoviesLazyRoute
+  MyListLazyRoute: typeof MyListLazyRoute
+  ShowsLazyRoute: typeof ShowsLazyRoute
+  WriteStoryLazyRoute: typeof WriteStoryLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
+  MoviesLazyRoute: MoviesLazyRoute,
+  MyListLazyRoute: MyListLazyRoute,
+  ShowsLazyRoute: ShowsLazyRoute,
   WriteStoryLazyRoute: WriteStoryLazyRoute,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -121,15 +159,23 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
+        "/movies",
+        "/my-list",
+        "/shows",
         "/write-story"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/movies": {
+      "filePath": "movies.lazy.tsx"
+    },
+    "/my-list": {
+      "filePath": "my-list.lazy.tsx"
+    },
+    "/shows": {
+      "filePath": "shows.lazy.tsx"
     },
     "/write-story": {
       "filePath": "write-story.lazy.tsx"
