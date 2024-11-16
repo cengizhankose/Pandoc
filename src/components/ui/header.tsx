@@ -16,7 +16,11 @@ export function Header() {
       <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black to-transparent">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/logo.png" alt="Pandoc" className="h-8 w-8" />
+            <img
+              src="https://utfs.io/f/KPU1Zt5N4JHy7s7B0yqVZDmTzd6rWoeIKYMCgPhRNtA91bun"
+              alt="Pandoc"
+              className="h-8 w-8"
+            />
             {/* <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-pink-700">
               Pandoc
             </span> */}
