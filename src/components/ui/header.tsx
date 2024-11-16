@@ -40,10 +40,7 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:block container mx-auto px-4 pb-4">
           <div className="flex justify-center space-x-8">
-            <Link
-              to="/homepage"
-              className="hover:text-amber-600 transition-colors"
-            >
+            <Link to="/" className="hover:text-amber-600 transition-colors">
               Home
             </Link>
             <Link
@@ -72,7 +69,7 @@ export function Header() {
       <nav className="md:hidden fixed bottom-0 w-full bg-black/95 border-t border-gray-800 z-50">
         <div className="flex items-center justify-around py-3 px-2 relative">
           <Link
-            to="/homepage"
+            to="/"
             className="flex flex-col items-center space-y-1 text-gray-400 hover:text-amber-600"
           >
             <HomeIcon className="h-6 w-6" />

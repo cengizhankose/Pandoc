@@ -9,6 +9,7 @@ const router = createRouter({
   routeTree,
   // Add defaultPreload: 'intent' for better UX
   defaultPreload: "intent",
+  basepath: "/Pandoc",
 });
 
 // Register router for type safety
