@@ -17,9 +17,9 @@ export function Header() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="https://utfs.io/f/KPU1Zt5N4JHy7s7B0yqVZDmTzd6rWoeIKYMCgPhRNtA91bun"
+              src="https://utfs.io/f/KPU1Zt5N4JHyL3xWUrjvHJUQAYc0VdGbpzehKLoRMgCNiWk4"
               alt="Pandoc"
-              className="h-8 w-8"
+              className="h-14 w-14"
             />
             {/* <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-pink-700">
               Pandoc

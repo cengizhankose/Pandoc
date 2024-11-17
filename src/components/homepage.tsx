@@ -12,68 +12,94 @@ interface MediaItem {
 const trendingItems: MediaItem[] = [
   {
     id: 1,
-    title: `Sci-Fi Title 1`,
+    title: `Silent Carnival`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyEy1tw9kCUOQdoMlra1hNGjL6sJAKg83Dbp4I",
+      "https://utfs.io/f/KPU1Zt5N4JHyqTJvvkFDYxisqryw29PpAS0bIGjULzB76EeT",
     videoUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyO98b0oysyPl41GXD9gENwhoZiLRB57pjHbAz",
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 2,
+    title: `Make it Real`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHywehH2z0zPqQRM1SkC7t8d6XHhO5omc9exNgn",
+      "https://utfs.io/f/KPU1Zt5N4JHymZZF46W7hWBRLVTjKOlgIDmfo1dGxv9nYtSN",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 3,
+    title: `One Frame at a Time`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHy7dg9IOqVZDmTzd6rWoeIKYMCgPhRNtA91bun",
+      "https://utfs.io/f/KPU1Zt5N4JHyfB5pKmOlAw9JroXYO1zQDvb7GjqH3ET6Wh0S",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 4,
+    title: `Movie`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyN2AVJ1FCqR6F07mrJ8Ch1vlx5uKbOUGQBZp9",
+      "https://utfs.io/f/KPU1Zt5N4JHyISjfboMTfULpXj6VWKG4ZFt2igPDwIMAv9Ob",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 5,
+    title: `Stellar Pursuit`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyqkxMIe5FDYxisqryw29PpAS0bIGjULzB76Ee",
+      "https://utfs.io/f/KPU1Zt5N4JHybRH1bEhFUHT8qCnRNbGxzOI7v6MprZ3XoKhg",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 6,
+    title: `Detective`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyQZ1M15Y1js2Ezg5qRKD3VXoy9ea7NYdvAthS",
+      "https://utfs.io/f/KPU1Zt5N4JHyFQfhGoEqKagP6iAcWZhSCHMwjmOUB7Ib3op2",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `Sci-Fi Title 1`,
+    id: 7,
+    title: `Ghetto`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyzIK2Imb4Qd6atqDx2nlON30Jjkoih5HfBK7U",
+      "https://utfs.io/f/KPU1Zt5N4JHybKv0zChFUHT8qCnRNbGxzOI7v6MprZ3XoKhg",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
 ];
 
 const userStories: MediaItem[] = [
   {
-    id: 1,
-    title: `User Story 1`,
+    id: 12,
+    title: `Moonlight Sonata`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHynMKX70SL5SdvgGauEMT8iHPhsA947RBlY0bF",
+      "https://utfs.io/f/KPU1Zt5N4JHyEy1tw9kCUOQdoMlra1hNGjL6sJAKg83Dbp4I",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `User Story 1`,
+    id: 13,
+    title: `Sleep Under the Stars`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHyW3csqTMjuwBzY4tGiVLZEh3vRmyf5gF9kQaT",
+      "https://utfs.io/f/KPU1Zt5N4JHysbxJTQRN08xsSefwaOvX71dTJQgtzUq5nk4Z",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
   {
-    id: 1,
-    title: `User Story 1`,
+    id: 14,
+    title: `The Last of Us`,
     imageUrl:
-      "https://utfs.io/f/KPU1Zt5N4JHy7Elo0fdqVZDmTzd6rWoeIKYMCgPhRNtA91bu",
+      "https://utfs.io/f/KPU1Zt5N4JHyN2hIeLZCqR6F07mrJ8Ch1vlx5uKbOUGQBZp9",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
+  },
+  {
+    id: 15,
+    title: `Powerpuff Flowers`,
+    imageUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHyO7xelrmysyPl41GXD9gENwhoZiLRB57pjHbA",
+    videoUrl:
+      "https://utfs.io/f/KPU1Zt5N4JHynIuWW4SL5SdvgGauEMT8iHPhsA947RBlY0bF",
   },
 ];
 
@@ -146,25 +172,24 @@ export function Homepage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://utfs.io/f/KPU1Zt5N4JHyoKxJytXvCiFX8WUPmr04b9s5jqI1HuOa3hkp')",
+                "url('https://utfs.io/f/KPU1Zt5N4JHyr8jc4wLwjUeziG8gLhFln4fcKVYXaHDImOMb')",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
           <div className="container mx-auto px-4 relative z-10">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Cosmic Odyssey
+              Moonlight Sonata
             </h1>
-            <p className="text-lg sm:text-xl mb-6 max-w-xl">
-              Embark on an interstellar journey through time and space. A
-              mind-bending sci-fi epic that challenges the very fabric of
-              reality.
+            <p className="text-md sm:text-xl mb-6 max-w-xl text-white/65">
+              A robot awakens to consciousness while learning to play Moonlight
+              Sonata.
             </p>
             <div className="flex flex-row gap-4">
               <Button
                 className="bg-amber-600 text-white w-full sm:w-auto"
                 onClick={() =>
                   openVideoPlayer(
-                    "https://utfs.io/f/KPU1Zt5N4JHyXq5QO3eUem1ucQCTslv8WbFahGJHOYiIZAnr"
+                    "https://utfs.io/f/KPU1Zt5N4JHyO98b0oysyPl41GXD9gENwhoZiLRB57pjHbAz"
                   )
                 }
               >
